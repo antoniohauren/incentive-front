@@ -14,10 +14,11 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import type { BalanceTableProps } from ".";
 import { ButtonLink } from "../button-link";
 
-export function BalanceTable({ items }: BalanceTableProps) {
+export function BalanceTable({ items, onDelete }: BalanceTableProps) {
   const [page, setPage] = React.useState(0);
   const [pageCount, setPageCount] = React.useState(5);
 
@@ -71,11 +72,16 @@ export function BalanceTable({ items }: BalanceTableProps) {
                   <TableCell>{row.startMoney - row.currentMoney}</TableCell>
                   <TableCell>{row.currentMoney}</TableCell>
                   <TableCell align="right">
-                    <IconButton aria-label="edit">
-                      <EditIcon />
-                    </IconButton>
+                    <Link to={`${row.id}`}>
+                      <IconButton aria-label="edit">
+                        <EditIcon />
+                      </IconButton>
+                    </Link>
 
-                    <IconButton aria-label="delete">
+                    <IconButton
+                      onClick={() => onDelete(row.id)}
+                      aria-label="delete"
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>

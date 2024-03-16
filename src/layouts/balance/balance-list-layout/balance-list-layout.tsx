@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/button-link";
 import { BaseLayout } from "@/layouts/base-layout";
 import type { BalanceListLayoutProps } from ".";
 
-export function BalanceListLayout({ items }: BalanceListLayoutProps) {
+export function BalanceListLayout({ items, onDelete }: BalanceListLayoutProps) {
   const hasItems = items.length > 0;
 
   return (
@@ -17,7 +17,7 @@ export function BalanceListLayout({ items }: BalanceListLayoutProps) {
         ) : null
       }
     >
-      <BalanceTable items={items} />
+      <BalanceTable items={items} onDelete={onDelete} />
     </BaseLayout>
   );
 }
