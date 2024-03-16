@@ -1,7 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import {
-  Button,
   IconButton,
   Paper,
   Stack,
@@ -16,6 +15,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import type { BalanceTableProps } from ".";
+import { ButtonLink } from "../button-link";
 
 export function BalanceTable({ items }: BalanceTableProps) {
   const [page, setPage] = React.useState(0);
@@ -30,7 +30,7 @@ export function BalanceTable({ items }: BalanceTableProps) {
   };
 
   const handleChangePageCount = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPageCount(+event.target.value || 0);
     setPage(0);
@@ -104,7 +104,8 @@ function EmptyMessage() {
     <Stack flex={"1"} gap={"2rem"} alignItems={"center"} marginBlock={"auto"}>
       <Typography>Você não possui saldos.</Typography>
 
-      <Button
+      <ButtonLink
+        to="novo"
         variant="contained"
         sx={{
           paddingInline: "2rem",
@@ -112,7 +113,7 @@ function EmptyMessage() {
         }}
       >
         criar saldo
-      </Button>
+      </ButtonLink>
     </Stack>
   );
 }

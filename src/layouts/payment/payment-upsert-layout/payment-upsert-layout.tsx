@@ -7,7 +7,7 @@ export function PaymentUpsertLayout({
   balances,
 }: PaymentUpsertLayoutProps) {
   return (
-    <BaseLayout title="Criar saldo">
+    <BaseLayout title="Criar pagamento">
       <PaymentCreateForm mutate={mutate} balances={balances} />
     </BaseLayout>
   );
