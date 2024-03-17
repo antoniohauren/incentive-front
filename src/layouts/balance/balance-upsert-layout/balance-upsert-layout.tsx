@@ -2,10 +2,19 @@ import { BalanceCreateForm } from "@/components/balance-create-form";
 import { BaseLayout } from "@/layouts/base-layout";
 import type { BalanceUpsertLayoutProps } from ".";
 
-export function BalanceUpsertLayout({ mutate }: BalanceUpsertLayoutProps) {
+export function BalanceUpsertLayout({
+  title,
+  mutate,
+  defaultValues,
+  isUpdate,
+}: BalanceUpsertLayoutProps) {
   return (
-    <BaseLayout title="Criar saldo">
-      <BalanceCreateForm mutate={mutate} />
+    <BaseLayout title={title}>
+      <BalanceCreateForm
+        mutate={mutate}
+        isUpdate={isUpdate}
+        defaultValues={defaultValues}
+      />
     </BaseLayout>
   );
 }

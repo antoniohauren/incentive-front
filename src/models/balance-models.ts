@@ -17,6 +17,11 @@ export type BalanceListResponse = {
   data: BalanceResponse[];
 };
 
+export type GetBalanceResponse = {
+  success: boolean;
+  data: BalanceResponse;
+};
+
 export type CreateBalanceResponse = {
   message: string; // TODO: create messages
   success: boolean;

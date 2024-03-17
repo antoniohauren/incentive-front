@@ -14,7 +14,7 @@ export default function BalanceCreatePage() {
 
   return (
     <ProtectedPage>
-      <BalanceUpsertLayout mutate={mutate} />
+      <BalanceUpsertLayout title="Criar saldo" mutate={mutate} />
     </ProtectedPage>
   );
 }

@@ -2,7 +2,11 @@ import { Box, Button, Stack, TextField } from "@mui/material";
 import React from "react";
 import type { BalanceCreateFormProps } from ".";
 
-export function BalanceCreateForm({ mutate }: BalanceCreateFormProps) {
+export function BalanceCreateForm({
+  mutate,
+  defaultValues,
+  isUpdate,
+}: BalanceCreateFormProps) {
   const descriptionRef = React.useRef<HTMLInputElement>(null);
   const nameRef = React.useRef<HTMLInputElement>(null);
   const startMoneyRef = React.useRef<HTMLInputElement>(null);
@@ -42,6 +46,7 @@ export function BalanceCreateForm({ mutate }: BalanceCreateFormProps) {
         label="Nome"
         variant="outlined"
         required
+        defaultValue={defaultValues?.name}
       />
 
       <TextField
@@ -51,6 +56,7 @@ export function BalanceCreateForm({ mutate }: BalanceCreateFormProps) {
         label="Descrição"
         variant="outlined"
         required
+        defaultValue={defaultValues?.description}
       />
 
       <TextField
@@ -60,6 +66,8 @@ export function BalanceCreateForm({ mutate }: BalanceCreateFormProps) {
         label="Valor"
         variant="outlined"
         required
+        defaultValue={defaultValues?.startMoney}
+        disabled={isUpdate}
       />
 
       <Stack
