@@ -14,10 +14,11 @@ import {
   ListItemText,
   Toolbar,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function SideBar() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   function signOut() {
     removeToken();
@@ -38,7 +39,10 @@ export function SideBar() {
       <Box sx={{ overflow: "auto" }}>
         <List>
           <ListItem disablePadding>
-            <ListItemLink to="/pagamentos">
+            <ListItemLink
+              selected={pathname.includes("pagamentos")}
+              to="/pagamentos"
+            >
               <ListItemIcon>
                 <MonetizationOnIcon />
               </ListItemIcon>
@@ -47,7 +51,7 @@ export function SideBar() {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemLink to="/saldos">
+            <ListItemLink selected={pathname.includes("saldos")} to="/saldos">
               <ListItemIcon>
                 <AccountBalanceWalletIcon />
               </ListItemIcon>
