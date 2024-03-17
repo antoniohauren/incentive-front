@@ -16,10 +16,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import type { PaymentTableProps } from ".";
+import { ConfirmDialog } from "../confirm-dialog";
 
-export function PaymentTable({ items }: PaymentTableProps) {
+export function PaymentTable({ items, onDelete }: PaymentTableProps) {
   const [page, setPage] = React.useState(0);
   const [pageCount, setPageCount] = React.useState(5);
+  const [showConfirm, setShowConfirm] = React.useState(false);
+  const [idToDelete, setIdToDelete] = React.useState("");
 
   if (items.length === 0) {
     return <EmptyMessage />;
@@ -30,7 +33,7 @@ export function PaymentTable({ items }: PaymentTableProps) {
   };
 
   const handleChangePageCount = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPageCount(+event.target.value || 0);
     setPage(0);
@@ -43,6 +46,14 @@ export function PaymentTable({ items }: PaymentTableProps) {
 
   return (
     <Paper sx={{ width: "100%" }}>
+      <ConfirmDialog
+        handleClose={() => setShowConfirm(false)}
+        handleConfirm={() => onDelete(idToDelete)}
+        open={showConfirm}
+        title="Excluir pagamento"
+        content="Se excluir este pagamento, esta ação não poderá ser revertida. Tem certeza que deseja excluir?"
+      />
+
       <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -71,7 +82,13 @@ export function PaymentTable({ items }: PaymentTableProps) {
                       <EditIcon />
                     </IconButton>
 
-                    <IconButton aria-label="delete">
+                    <IconButton
+                      onClick={() => {
+                        setShowConfirm(true);
+                        setIdToDelete(row.id);
+                      }}
+                      aria-label="delete"
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>

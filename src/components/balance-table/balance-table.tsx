@@ -17,10 +17,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import type { BalanceTableProps } from ".";
 import { ButtonLink } from "../button-link";
+import { ConfirmDialog } from "../confirm-dialog";
 
 export function BalanceTable({ items, onDelete }: BalanceTableProps) {
   const [page, setPage] = React.useState(0);
   const [pageCount, setPageCount] = React.useState(5);
+  const [showConfirm, setShowConfirm] = React.useState(false);
+  const [idToDelete, setIdToDelete] = React.useState("");
 
   if (items.length === 0) {
     return <EmptyMessage />;
@@ -44,6 +47,14 @@ export function BalanceTable({ items, onDelete }: BalanceTableProps) {
 
   return (
     <Paper sx={{ width: "100%" }}>
+      <ConfirmDialog
+        handleClose={() => setShowConfirm(false)}
+        handleConfirm={() => onDelete(idToDelete)}
+        open={showConfirm}
+        title="Excluir saldo"
+        content="Se excluir este saldo, esta ação não poderá ser revertida. Tem certeza que deseja excluir?"
+      />
+
       <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -79,7 +90,10 @@ export function BalanceTable({ items, onDelete }: BalanceTableProps) {
                     </Link>
 
                     <IconButton
-                      onClick={() => onDelete(row.id)}
+                      onClick={() => {
+                        setShowConfirm(true);
+                        setIdToDelete(row.id);
+                      }}
                       aria-label="delete"
                     >
                       <DeleteIcon />
