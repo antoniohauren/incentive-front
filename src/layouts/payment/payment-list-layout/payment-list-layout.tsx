@@ -3,7 +3,7 @@ import { PaymentTable } from "@/components/payment-table";
 import { BaseLayout } from "@/layouts/base-layout";
 import type { PaymentListLayoutProps } from ".";
 
-export function PaymentListLayout({ items }: PaymentListLayoutProps) {
+export function PaymentListLayout({ items, onDelete }: PaymentListLayoutProps) {
   const hasItems = items.length > 0;
 
   return (
@@ -17,7 +17,7 @@ export function PaymentListLayout({ items }: PaymentListLayoutProps) {
         ) : null
       }
     >
-      <PaymentTable items={items || []} />
+      <PaymentTable onDelete={onDelete} items={items || []} />
     </BaseLayout>
   );
 }

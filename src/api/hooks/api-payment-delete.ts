@@ -1,10 +1,11 @@
 import api from "@/utils/api";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useApiPaymentDelete(
   onSuccess?: () => void,
   onError?: () => void,
 ) {
+  const qc = useQueryClient();
   const endpoint = "/payment";
 
   function mutationFn(id: string) {
@@ -13,7 +14,12 @@ export function useApiPaymentDelete(
 
   return useMutation({
     mutationFn,
-    onSuccess,
+    onSuccess: () => {
+      qc.invalidateQueries({
+        queryKey: ["payment-list"],
+      });
+      onSuccess?.();
+    },
     onError,
   });
 }

@@ -1,10 +1,11 @@
 import api from "@/utils/api";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useApiBalanceDelete(
   onSuccess?: () => void,
   onError?: () => void,
 ) {
+  const qc = useQueryClient();
   const endpoint = "/balance";
 
   function mutationFn(id: string) {
@@ -13,7 +14,12 @@ export function useApiBalanceDelete(
 
   return useMutation({
     mutationFn,
-    onSuccess,
+    onSuccess: () => {
+      qc.invalidateQueries({
+        queryKey: ["balance-list"],
+      });
+      onSuccess?.();
+    },
     onError,
   });
 }
