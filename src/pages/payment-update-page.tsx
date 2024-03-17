@@ -1,4 +1,5 @@
 import { useApiGetBalanceList } from "@/api/hooks/api-get-balance-list";
+import { useApiGetPayment } from "@/api/hooks/api-get-payment";
 import { useApiPaymentUpdate } from "@/api/hooks/api-payment-update";
 import { PaymentUpsertLayout } from "@/layouts/payment/payment-upsert-layout";
 import type { SelectOption } from "@/utils/types";
@@ -16,19 +17,35 @@ export default function PaymentsUpdatePage() {
 
   const { mutate } = useApiPaymentUpdate(id, onSuccess);
 
-  const { data } = useApiGetBalanceList();
+  const { data: balanceList } = useApiGetBalanceList();
+  const { data, isLoading } = useApiGetPayment(id);
 
   const balances: SelectOption[] =
-    data?.map(({ name, id }) => {
+    balanceList?.map(({ name, id }) => {
       return {
         label: name,
         value: id,
       };
     }) || [];
 
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <ProtectedPage>
-      <PaymentUpsertLayout mutate={mutate} balances={balances} />
+      <PaymentUpsertLayout
+        title="Editar pagamento"
+        mutate={mutate}
+        balances={balances}
+        isUpdate={true}
+        defaultValues={{
+          balanceId: data?.balanceId || "",
+          description: data?.description || "",
+          name: data?.name || "",
+          value: data?.value || 0,
+        }}
+      />
     </ProtectedPage>
   );
 }

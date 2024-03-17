@@ -14,6 +14,8 @@ import type { PaymentCreateFormProps } from ".";
 export function PaymentCreateForm({
   mutate,
   balances,
+  defaultValues,
+  isUpdate,
 }: PaymentCreateFormProps) {
   const [balanceId, setBalanceId] = React.useState<string>("");
 
@@ -58,6 +60,7 @@ export function PaymentCreateForm({
         label="Nome"
         variant="outlined"
         required
+        defaultValue={defaultValues?.name}
       />
 
       <TextField
@@ -76,6 +79,8 @@ export function PaymentCreateForm({
         label="Valor"
         variant="outlined"
         required
+        defaultValue={defaultValues?.value}
+        disabled={isUpdate}
       />
 
       <FormControl fullWidth>
@@ -90,6 +95,8 @@ export function PaymentCreateForm({
           onChange={(id) => setBalanceId(id.target.value)}
           value={balanceId}
           required
+          defaultValue={defaultValues?.balanceId}
+          disabled={isUpdate}
         >
           {balances.map(({ value, label }) => (
             <MenuItem key={value} value={value}>

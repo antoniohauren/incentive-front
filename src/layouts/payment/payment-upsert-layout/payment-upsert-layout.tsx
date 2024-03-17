@@ -3,12 +3,20 @@ import { BaseLayout } from "@/layouts/base-layout";
 import type { PaymentUpsertLayoutProps } from ".";
 
 export function PaymentUpsertLayout({
+  title,
   mutate,
   balances,
+  defaultValues,
+  isUpdate,
 }: PaymentUpsertLayoutProps) {
   return (
-    <BaseLayout title="Criar pagamento">
-      <PaymentCreateForm mutate={mutate} balances={balances} />
+    <BaseLayout title={title}>
+      <PaymentCreateForm
+        mutate={mutate}
+        balances={balances}
+        isUpdate={isUpdate}
+        defaultValues={defaultValues}
+      />
     </BaseLayout>
   );
 }

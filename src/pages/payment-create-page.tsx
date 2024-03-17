@@ -25,7 +25,11 @@ export default function PaymentsCreatePage() {
 
   return (
     <ProtectedPage>
-      <PaymentUpsertLayout mutate={mutate} balances={balances} />
+      <PaymentUpsertLayout
+        title="Criar pagamento"
+        mutate={mutate}
+        balances={balances}
+      />
     </ProtectedPage>
   );
 }

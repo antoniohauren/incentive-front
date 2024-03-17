@@ -1,3 +1,5 @@
 import type { PaymentCreateFormProps } from "@/components/payment-create-form";
 
-export type PaymentUpsertLayoutProps = PaymentCreateFormProps;
+export type PaymentUpsertLayoutProps = {
+  title: string;
+} & PaymentCreateFormProps;
