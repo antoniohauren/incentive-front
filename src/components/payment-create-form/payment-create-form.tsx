@@ -17,7 +17,9 @@ export function PaymentCreateForm({
   defaultValues,
   isUpdate,
 }: PaymentCreateFormProps) {
-  const [balanceId, setBalanceId] = React.useState<string>("");
+  const [balanceId, setBalanceId] = React.useState<string>(
+    defaultValues?.balanceId || ""
+  );
 
   const descriptionRef = React.useRef<HTMLInputElement>(null);
   const nameRef = React.useRef<HTMLInputElement>(null);
@@ -70,6 +72,7 @@ export function PaymentCreateForm({
         label="Descrição"
         variant="outlined"
         required
+        defaultValue={defaultValues?.description}
       />
 
       <TextField
@@ -95,7 +98,6 @@ export function PaymentCreateForm({
           onChange={(id) => setBalanceId(id.target.value)}
           value={balanceId}
           required
-          defaultValue={defaultValues?.balanceId}
           disabled={isUpdate}
         >
           {balances.map(({ value, label }) => (
