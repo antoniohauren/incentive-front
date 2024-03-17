@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import type { PaymentTableProps } from ".";
 import { ConfirmDialog } from "../confirm-dialog";
 
@@ -78,9 +79,11 @@ export function PaymentTable({ items, onDelete }: PaymentTableProps) {
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.value}</TableCell>
                   <TableCell align="right">
-                    <IconButton aria-label="edit">
-                      <EditIcon />
-                    </IconButton>
+                    <Link to={`${row.id}`}>
+                      <IconButton aria-label="edit">
+                        <EditIcon />
+                      </IconButton>
+                    </Link>
 
                     <IconButton
                       onClick={() => {
