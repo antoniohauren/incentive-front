@@ -5,7 +5,7 @@ import type { BaseLayoutProps } from ".";
 
 export function BaseLayout({ children, title = "", button }: BaseLayoutProps) {
   return (
-    <Box>
+    <Box padding={2}>
       <Header />
       <SideBar />
       <Box
@@ -24,7 +24,7 @@ export function BaseLayout({ children, title = "", button }: BaseLayoutProps) {
           {button}
         </Stack>
 
-        <Box display={"flex"} minHeight={"calc(100vh - 8.5rem)"}>
+        <Box display={"flex"} minHeight={"calc(100vh - 10rem)"}>
           {children}
         </Box>
       </Box>
