@@ -2,7 +2,7 @@ import { SignInForm } from "@/components/sign-in-form";
 import { Container, Stack, Typography } from "@mui/material";
 import type { SignInLayoutProps } from ".";
 
-export function SignInLayout({ mutate }: SignInLayoutProps) {
+export function SignInLayout({ mutate, isLoading }: SignInLayoutProps) {
   return (
     <Stack height="100vh" paddingTop="5rem">
       <Container>
@@ -10,7 +10,7 @@ export function SignInLayout({ mutate }: SignInLayoutProps) {
           Entrar
         </Typography>
 
-        <SignInForm mutate={mutate} />
+        <SignInForm mutate={mutate} isLoading={isLoading} />
       </Container>
     </Stack>
   );

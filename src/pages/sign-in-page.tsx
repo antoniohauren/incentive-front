@@ -25,7 +25,7 @@ export function SignInPage() {
     setOpen(false);
   }
 
-  const { mutate } = useApiSignInHook(onSuccess, handleOpen);
+  const { mutate, isPending } = useApiSignInHook(onSuccess, handleOpen);
 
   return (
     <>
@@ -36,7 +36,7 @@ export function SignInPage() {
         variant="error"
       />
 
-      <SignInLayout mutate={mutate} />
+      <SignInLayout mutate={mutate} isLoading={isPending} />
     </>
   );
 }

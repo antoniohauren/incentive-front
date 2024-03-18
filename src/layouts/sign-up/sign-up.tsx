@@ -2,7 +2,7 @@ import { SignUpForm } from "@/components/sign-up-form";
 import { Container, Stack, Typography } from "@mui/material";
 import type { SignUpLayoutProps } from ".";
 
-export function SignUpLayout({ mutate }: SignUpLayoutProps) {
+export function SignUpLayout({ mutate, isLoading }: SignUpLayoutProps) {
   return (
     <Stack height="100vh" paddingTop="5rem">
       <Container>
@@ -10,7 +10,7 @@ export function SignUpLayout({ mutate }: SignUpLayoutProps) {
           Cadastrar
         </Typography>
 
-        <SignUpForm mutate={mutate} />
+        <SignUpForm mutate={mutate} isLoading={isLoading} />
       </Container>
     </Stack>
   );

@@ -3,7 +3,7 @@ import React from "react";
 import type { SignInFormProps } from ".";
 import { ButtonLink } from "../button-link";
 
-export function SignInForm({ mutate }: SignInFormProps) {
+export function SignInForm({ mutate, isLoading }: SignInFormProps) {
   const usernameRef = React.useRef<HTMLInputElement>(null);
   const passwordRef = React.useRef<HTMLInputElement>(null);
 
@@ -57,11 +57,21 @@ export function SignInForm({ mutate }: SignInFormProps) {
         justifyContent={"space-between"}
         marginTop={"auto"}
       >
-        <ButtonLink to="/auth/cadastrar" variant="outlined" color="primary">
+        <ButtonLink
+          to="/auth/cadastrar"
+          variant="outlined"
+          color="primary"
+          disabled={isLoading}
+        >
           Cadastrar
         </ButtonLink>
 
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={isLoading}
+        >
           Entrar
         </Button>
       </Stack>

@@ -12,7 +12,7 @@ export function SignUpPage() {
 
   const navigate = useNavigate();
 
-  const { mutate } = useApiSignUpHook(onSuccess, handleOpen);
+  const { mutate, isPending } = useApiSignUpHook(onSuccess, handleOpen);
 
   function onSuccess(response: SignUpResponse) {
     setToken(response.data.token);
@@ -38,7 +38,7 @@ export function SignUpPage() {
         variant="error"
       />
 
-      <SignUpLayout mutate={mutate} />
+      <SignUpLayout mutate={mutate} isLoading={isPending} />
     </>
   );
 }
