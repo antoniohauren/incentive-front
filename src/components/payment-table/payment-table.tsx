@@ -121,7 +121,7 @@ function EmptyMessage() {
       <Typography>Você não possui pedidos abertos.</Typography>
 
       <ButtonLink
-        to="novo"
+        to="/pagamentos/novo"
         variant="contained"
         sx={{
           paddingInline: "2rem",

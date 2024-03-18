@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken } from "./token";
+import { getToken, removeToken } from "./token";
 const baseUrl = import.meta.env.VITE_API_URL;
 
 export const publicApi = axios.create({
@@ -19,5 +19,20 @@ api.interceptors.request.use((config) => {
 
   return config;
 });
+
+api.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      removeToken();
+      window.location.href = "/auth/entrar";
+      return;
+    }
+
+    return error;
+  },
+);
 
 export default api;
