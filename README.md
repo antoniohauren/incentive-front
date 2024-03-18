@@ -41,3 +41,7 @@ npm run build
 ```
 
 Este comando compilará o projeto utilizando o TypeScript e o Vite, gerando os arquivos otimizados para produção na pasta `dist`.
+
+## Preview
+
+[preview.webm](https://github.com/antoniohauren/incentive-front/assets/101012531/ebbe2159-76da-4e6e-99fb-4ebda3eee7c4)
