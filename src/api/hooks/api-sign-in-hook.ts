@@ -2,7 +2,10 @@ import type { SignInRequest, SignInResponse } from "@/models/auth-models";
 import { publicApi } from "@/utils/api";
 import { useMutation } from "@tanstack/react-query";
 
-export function useApiSignInHook(onSuccess?: (data: SignInResponse) => void) {
+export function useApiSignInHook(
+  onSuccess?: (data: SignInResponse) => void,
+  onError?: () => void,
+) {
   const endpoint = "/auth/sign-in";
 
   function mutationFn(data: SignInRequest) {
@@ -14,5 +17,6 @@ export function useApiSignInHook(onSuccess?: (data: SignInResponse) => void) {
     onSuccess: (data) => {
       return onSuccess?.(data.data);
     },
+    onError,
   });
 }
