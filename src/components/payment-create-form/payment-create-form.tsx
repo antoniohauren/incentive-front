@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import type { PaymentCreateFormProps } from ".";
+import { ButtonLink } from "../button-link";
 
 export function PaymentCreateForm({
   mutate,
@@ -113,9 +114,9 @@ export function PaymentCreateForm({
         justifyContent={"space-between"}
         marginTop={"auto"}
       >
-        <Button variant="outlined" color="primary">
+        <ButtonLink to="/pagamentos" variant="outlined" color="primary">
           Cancelar
-        </Button>
+        </ButtonLink>
 
         <Button type="submit" variant="contained" color="primary">
           Salvar

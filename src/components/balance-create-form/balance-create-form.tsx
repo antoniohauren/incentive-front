@@ -1,6 +1,7 @@
 import { Box, Button, Stack, TextField } from "@mui/material";
 import React from "react";
 import type { BalanceCreateFormProps } from ".";
+import { ButtonLink } from "../button-link";
 
 export function BalanceCreateForm({
   mutate,
@@ -75,9 +76,9 @@ export function BalanceCreateForm({
         justifyContent={"space-between"}
         marginTop={"auto"}
       >
-        <Button variant="outlined" color="primary">
+        <ButtonLink to="/saldos" variant="outlined" color="primary">
           Cancelar
-        </Button>
+        </ButtonLink>
 
         <Button type="submit" variant="contained" color="primary">
           Salvar
