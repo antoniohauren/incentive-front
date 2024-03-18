@@ -42,6 +42,15 @@ npm run build
 
 Este comando compilará o projeto utilizando o TypeScript e o Vite, gerando os arquivos otimizados para produção na pasta `dist`.
 
+## Tecnologias
+- [Vite](https://vitejs.dev/) v5.1.6
+- [React](https://react.dev/) v18.2.0
+- [React-Query](https://tanstack.com/query/latest/) v5.28.4
+- [React-Router](https://reactrouter.com/en/main) v6.22.3
+- [Mui](https://mui.com/) v5.15.3
+- [Axios](https://axios-http.com/) v1.6.8
+- [Typescript](https://www.typescriptlang.org/) v5.2.2
+
 ## Preview
 
 [preview.webm](https://github.com/antoniohauren/incentive-front/assets/101012531/ebbe2159-76da-4e6e-99fb-4ebda3eee7c4)
