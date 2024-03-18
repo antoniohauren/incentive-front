@@ -1,9 +1,11 @@
 import api from "@/utils/api";
+import { getErrorMessage } from "@/utils/error";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { AxiosError } from "axios";
 
 export function useApiBalanceDelete(
   onSuccess?: () => void,
-  onError?: () => void,
+  onError?: (message: string) => void,
 ) {
   const qc = useQueryClient();
   const endpoint = "/balance";
@@ -20,6 +22,12 @@ export function useApiBalanceDelete(
       });
       onSuccess?.();
     },
-    onError,
+    onError: (
+      error: AxiosError<Record<string, string> | { message: string }>,
+    ) => {
+      const message = getErrorMessage(error);
+
+      return onError?.(message);
+    },
   });
 }

@@ -12,13 +12,13 @@ export function SignUpPage() {
 
   const navigate = useNavigate();
 
+  const { mutate } = useApiSignUpHook(onSuccess, handleOpen);
+
   function onSuccess(response: SignUpResponse) {
     setToken(response.data.token);
 
     navigate("/");
   }
-
-  const { mutate } = useApiSignUpHook(onSuccess, handleOpen);
 
   function handleOpen(msg: string) {
     setMessage(msg);
