@@ -15,7 +15,7 @@ export default function PaymentsUpdatePage() {
     navigate("/pagamentos");
   }
 
-  const { mutate } = useApiPaymentUpdate(id, onSuccess);
+  const { mutate, isPending } = useApiPaymentUpdate(id, onSuccess);
 
   const { data: balanceList } = useApiGetBalanceList();
   const { data, isLoading } = useApiGetPayment(id);
@@ -45,6 +45,7 @@ export default function PaymentsUpdatePage() {
           name: data?.name || "",
           value: data?.value || 0,
         }}
+        isLoading={isPending}
       />
     </ProtectedPage>
   );

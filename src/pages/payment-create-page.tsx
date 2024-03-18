@@ -17,7 +17,7 @@ export default function PaymentsCreatePage() {
     navigate("/pagamentos");
   }
 
-  const { mutate } = useApiPaymentCreate(onSuccess, handleOpen);
+  const { mutate, isPending } = useApiPaymentCreate(onSuccess, handleOpen);
   const { data } = useApiGetBalanceList();
 
   function handleOpen(msg: string) {
@@ -50,6 +50,7 @@ export default function PaymentsCreatePage() {
         title="Criar pagamento"
         mutate={mutate}
         balances={balances}
+        isLoading={isPending}
       />
     </ProtectedPage>
   );

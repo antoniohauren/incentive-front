@@ -11,7 +11,7 @@ export default function BalanceCreatePage() {
 
   const navigate = useNavigate();
 
-  const { mutate } = useApiBalanceCreate(onSuccess, handleOpen);
+  const { mutate, isPending } = useApiBalanceCreate(onSuccess, handleOpen);
 
   function onSuccess() {
     navigate("/saldos", {
@@ -39,7 +39,11 @@ export default function BalanceCreatePage() {
         variant="error"
       />
 
-      <BalanceUpsertLayout title="Criar saldo" mutate={mutate} />
+      <BalanceUpsertLayout
+        title="Criar saldo"
+        mutate={mutate}
+        isLoading={isPending}
+      />
     </ProtectedPage>
   );
 }

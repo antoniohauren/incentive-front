@@ -8,6 +8,7 @@ export function PaymentUpsertLayout({
   balances,
   defaultValues,
   isUpdate,
+  isLoading,
 }: PaymentUpsertLayoutProps) {
   return (
     <BaseLayout title={title}>
@@ -16,6 +17,7 @@ export function PaymentUpsertLayout({
         balances={balances}
         isUpdate={isUpdate}
         defaultValues={defaultValues}
+        isLoading={isLoading}
       />
     </BaseLayout>
   );

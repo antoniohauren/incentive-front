@@ -7,6 +7,7 @@ export function BalanceUpsertLayout({
   mutate,
   defaultValues,
   isUpdate,
+  isLoading,
 }: BalanceUpsertLayoutProps) {
   return (
     <BaseLayout title={title}>
@@ -14,6 +15,7 @@ export function BalanceUpsertLayout({
         mutate={mutate}
         isUpdate={isUpdate}
         defaultValues={defaultValues}
+        isLoading={isLoading}
       />
     </BaseLayout>
   );

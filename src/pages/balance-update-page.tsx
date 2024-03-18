@@ -14,7 +14,7 @@ export default function BalanceUpdatePage() {
   }
 
   const { data, isLoading } = useApiGetBalance(id);
-  const { mutate } = useApiBalanceUpdate(id, onSuccess);
+  const { mutate, isPending } = useApiBalanceUpdate(id, onSuccess);
 
   if (isLoading) {
     return null;
@@ -31,6 +31,7 @@ export default function BalanceUpdatePage() {
           name: data?.name || "",
           startMoney: data?.startMoney || 0,
         }}
+        isLoading={isPending}
       />
     </ProtectedPage>
   );

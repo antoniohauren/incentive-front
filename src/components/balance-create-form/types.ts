@@ -4,4 +4,5 @@ export type BalanceCreateFormProps = {
   mutate: (data: BalanceRequest) => void;
   isUpdate?: boolean;
   defaultValues?: BalanceRequest;
+  isLoading: boolean;
 };

@@ -17,6 +17,7 @@ export function PaymentCreateForm({
   balances,
   defaultValues,
   isUpdate,
+  isLoading,
 }: PaymentCreateFormProps) {
   const [balanceId, setBalanceId] = React.useState<string>(
     defaultValues?.balanceId || ""
@@ -114,11 +115,21 @@ export function PaymentCreateForm({
         justifyContent={"space-between"}
         marginTop={"auto"}
       >
-        <ButtonLink to="/pagamentos" variant="outlined" color="primary">
+        <ButtonLink
+          to="/pagamentos"
+          variant="outlined"
+          color="primary"
+          disabled={isLoading}
+        >
           Cancelar
         </ButtonLink>
 
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={isLoading}
+        >
           Salvar
         </Button>
       </Stack>

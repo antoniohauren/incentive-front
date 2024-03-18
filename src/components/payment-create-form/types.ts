@@ -6,4 +6,5 @@ export type PaymentCreateFormProps = {
   balances: SelectOption[];
   isUpdate?: boolean;
   defaultValues?: PaymentRequest;
+  isLoading: boolean;
 };

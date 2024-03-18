@@ -7,6 +7,7 @@ export function BalanceCreateForm({
   mutate,
   defaultValues,
   isUpdate,
+  isLoading,
 }: BalanceCreateFormProps) {
   const descriptionRef = React.useRef<HTMLInputElement>(null);
   const nameRef = React.useRef<HTMLInputElement>(null);
@@ -76,11 +77,21 @@ export function BalanceCreateForm({
         justifyContent={"space-between"}
         marginTop={"auto"}
       >
-        <ButtonLink to="/saldos" variant="outlined" color="primary">
+        <ButtonLink
+          to="/saldos"
+          variant="outlined"
+          color="primary"
+          disabled={isLoading}
+        >
           Cancelar
         </ButtonLink>
 
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={isLoading}
+        >
           Salvar
         </Button>
       </Stack>
