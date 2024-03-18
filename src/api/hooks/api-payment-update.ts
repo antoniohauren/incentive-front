@@ -3,12 +3,13 @@ import type {
   PaymentRequest,
 } from "@/models/payment-models";
 import api from "@/utils/api";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function useApiPaymentUpdate(
   id?: string,
   onSuccess?: (data: CreatePaymentResponse) => void,
 ) {
+  const qc = useQueryClient();
   const endpoint = `/payment/${id}`;
 
   function mutationFn(data: PaymentRequest) {
@@ -18,6 +19,9 @@ export function useApiPaymentUpdate(
   return useMutation({
     mutationFn,
     onSuccess: (data) => {
+      qc.invalidateQueries({
+        queryKey: [`payment-${id}`],
+      });
       return onSuccess?.(data.data);
     },
   });
