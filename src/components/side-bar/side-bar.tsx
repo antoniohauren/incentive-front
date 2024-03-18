@@ -28,15 +28,28 @@ export function SideBar() {
   return (
     <Drawer
       variant="permanent"
+      data-joy-color-scheme="dark"
       sx={{
         width: 320,
         flexShrink: 0,
-        "& .MuiDrawer-paper": { width: 320, boxSizing: "border-box" },
+        "& .MuiDrawer-paper": {
+          width: 320,
+          boxSizing: "border-box",
+          backgroundColor: "#363636",
+        },
       }}
     >
       <Toolbar />
 
-      <Box sx={{ overflow: "auto" }}>
+      <Box
+        sx={{
+          overflow: "auto",
+          color: "#FFF",
+          "& .MuiSvgIcon-root": {
+            color: "#A6A6A6",
+          },
+        }}
+      >
         <List>
           <ListItem disablePadding>
             <ListItemLink

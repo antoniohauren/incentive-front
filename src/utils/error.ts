@@ -11,6 +11,7 @@ const errorMessages: Record<string, string> = {
   INSUFICIENT_BALANCE: "Saldo insuficiente.",
   CANT_DELETE_BALANCE_WITH_PAYMENTS:
     "Você não pode apagar um saldo com pagamentos.",
+  FAILED_TO_CREATE_USER: "Erro ao criar usuário",
 };
 
 export function getErrorMessage(

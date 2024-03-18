@@ -1,4 +1,3 @@
-import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import BalanceCreatePage from "./pages/balance-create-page";
@@ -9,12 +8,6 @@ import PaymentsPage from "./pages/payment-page";
 import PaymentsUpdatePage from "./pages/payment-update-page";
 import { SignInPage } from "./pages/sign-in-page";
 import { SignUpPage } from "./pages/sign-up-page";
-
-const darkTheme = createTheme({
-  palette: {
-    mode: "light",
-  },
-});
 
 const queryClient = new QueryClient();
 
@@ -73,13 +66,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }
 

@@ -9,6 +9,8 @@ export function Header() {
         paddingInline: 2,
         paddingBlock: 1,
         zIndex: (theme) => theme.zIndex.drawer + 1,
+        color: "#FFFFFF",
+        backgroundColor: "#424242",
       }}
     >
       <Box
