@@ -79,7 +79,7 @@ export function PaymentTable({ items, onDelete }: PaymentTableProps) {
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.value}</TableCell>
                   <TableCell align="right">
-                    <Link to={`${row.id}`}>
+                    <Link to={`/pagamentos/${row.id}`}>
                       <IconButton aria-label="edit">
                         <EditIcon />
                       </IconButton>
